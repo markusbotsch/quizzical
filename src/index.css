@@ -47,6 +47,7 @@ body {
   height: 100vh;
   display: grid;
   place-content: center;
+  padding: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -72,12 +73,14 @@ code {
   position: fixed;
   left: 0;
   bottom: -5px;
+  z-index: -1;
 }
 
 .yellowBlob {
   position: fixed;
   right: 0;
   top: 0;
+  z-index: -1;
 }
 
 .start-screen {
@@ -138,8 +141,16 @@ input[type="radio"] {
   display: none;
 }
 
-input:checked + label {
+.question > input:checked + label {
   background-color: #D6DBF5;
   border: 1px solid #D6DBF5;
 }
+
+
+.question-check > input:checked + label {
+  background-color: #F8BCBC;
+  border: 1px solid #F8BCBC;
+}
+
+
 

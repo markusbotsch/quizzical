@@ -23,6 +23,7 @@ export default function Quiz() {
     const [quizData, setQuizData] = React.useState(setup);
     const [checkAnswersClicked, setCheckAnswersClicked] = React.useState(false);
     const [numberOfAnswers, setNumberOfAnswers] = React.useState(0);
+    const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = React.useState(0);
 
     const questionElements = quizData.map(item => 
         <Question 
@@ -30,7 +31,9 @@ export default function Quiz() {
             id={item.id} 
             question={item.question} 
             allAnswers={item.allAnswers}
+            correctAnswer={item.correctAnswer}
             handleInput={answerSelected}
+            checkAnswersClicked={checkAnswersClicked}
         />);
 
 
@@ -43,18 +46,25 @@ export default function Quiz() {
     React.useEffect(() => {
         const currentAnswers = quizData.filter(question => question.selectedAnswer != "");
         setNumberOfAnswers(currentAnswers.length);
+
+        let currentCorrectAnswers = 0;
+
+        quizData.forEach(question => {
+            if(question.selectedAnswer == question.correctAnswer) currentCorrectAnswers += 1;
+        })
+        
+        setNumberOfCorrectAnswers(currentCorrectAnswers)
     }, [quizData])
 
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit(event) {
+        event.preventDefault();
         if (checkAnswersClicked) {
             setCheckAnswersClicked(false)
             setQuizData(setup);
             setNumberOfAnswers(0);
             return
         }
-        
         setCheckAnswersClicked(true);
     }
 
@@ -64,7 +74,7 @@ export default function Quiz() {
             <form onSubmit={handleSubmit}>
             {questionElements}
             <div className="question-submit">
-                {checkAnswersClicked ? <span>You scored x/x correct answers</span> : ""}
+                {checkAnswersClicked ? <span>{`You scored ${numberOfCorrectAnswers}/5 correct answers`}</span> : ""}
                 <button className="button-check" disabled={numberOfAnswers < 5}>
                     {checkAnswersClicked ? "Play again" : "Check answers"}
                 </button>

@@ -23,6 +23,12 @@ function App() {
         <img src={blueBlob} />
       </div>
       {gameStarted ? <Quiz /> : <Start handleInput={startGame}/>}
+      <div className="yellowBlob">
+        <img src={yellowBlob} />
+      </div>
+      <div className="blueBlob">
+        <img src={blueBlob} />
+      </div>
     </div>
   );
 }
