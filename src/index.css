@@ -51,11 +51,16 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Karla', sans-serif;
+  color: #293264;
 }
 
 h1 {
   font-size: 32px;
-  color: #293264;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 code {
@@ -64,13 +69,13 @@ code {
 }
 
 .blueBlob {
-  position: absolute;
+  position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: -5px;
 }
 
 .yellowBlob {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 }
@@ -79,15 +84,62 @@ code {
   text-align: center;
 }
 
-.button-start {
+
+button {
   border: none;
   background-color: #4D5B9E;
   color: #F5F7FB;
   width: 180px;
-  height: 55px;
-  border-radius: 15px;
-  font-size: 16px;
+  border-radius: 10px;
   font-family: 'Inter', sans-serif;
-  margin-top: 20px;
   cursor: pointer;
 }
+
+button:disabled {
+  opacity: 0.4;
+}
+
+.button-start {
+  font-size: 16px;
+  height: 55px;
+}
+
+.button-check {
+  font-size: 12px;
+  height: 35px;
+  font-weight: bold;
+}
+
+
+
+.question-section {
+  max-width: 600px;
+}
+
+.question-submit {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+label {
+  display: inline-block;
+  font-size: 10px;
+  padding: 5px 20px;
+  border: 1px solid #4D5B9E;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input:checked + label {
+  background-color: #D6DBF5;
+  border: 1px solid #D6DBF5;
+}
+
