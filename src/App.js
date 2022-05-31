@@ -22,7 +22,7 @@ function App() {
       <div className="blueBlob">
         <img src={blueBlob} />
       </div>
-      {gameStarted ? <Quiz /> : <Start handleInput={startGame}/>}
+      {gameStarted ? <Quiz gameStarted={gameStarted} setGameStarted={setGameStarted} /> : <Start handleInput={startGame}/>}
       <div className="yellowBlob">
         <img src={yellowBlob} />
       </div>

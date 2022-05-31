@@ -1,30 +1,40 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import axios from 'axios';
 
-import data from '../data';
 import Question from './Question';
 
 
-export default function Quiz() {
+export default function Quiz(props) {
 
-    const setup = data.map(item => {
-        
-        // create array with all answers and correct answer at random position
-        const allAnswers = item.incorrect_answers.concat(item.correct_answer).sort(() => Math.random() - 0.5);
-        
-        return ({ 
-            id: nanoid(),
-            question: item.question,
-            correctAnswer: item.correct_answer,
-            allAnswers: allAnswers,
-            selectedAnswer: ""
-    })});
-
-    const [quizData, setQuizData] = React.useState(setup);
+    const [quizData, setQuizData] = React.useState([]);
     const [checkAnswersClicked, setCheckAnswersClicked] = React.useState(false);
     const [numberOfAnswers, setNumberOfAnswers] = React.useState(0);
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = React.useState(0);
 
+    React.useEffect(() => {
+        console.log("Game started:", props.gameStarted);
+        if(!props.gameStarted) return;
+
+        axios.get("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
+            .then(response => {
+                return response.data.results.map(item => {
+                    // create array with all answers and correct answer at random position
+                    const allAnswers = item.incorrect_answers.concat(item.correct_answer).sort(() => Math.random() - 0.5);
+                    return ({ 
+                        id: nanoid(),
+                        question: item.question,
+                        correctAnswer: item.correct_answer,
+                        allAnswers: allAnswers,
+                        selectedAnswer: ""
+                    })
+                })
+            })
+            .then(data => setQuizData(data))
+            .catch((e) => console.error(e))
+            
+    },[props.gameStarted])
+    
     const questionElements = quizData.map(item => 
         <Question 
             key={item.id} 
@@ -48,12 +58,11 @@ export default function Quiz() {
         setNumberOfAnswers(currentAnswers.length);
 
         let currentCorrectAnswers = 0;
-
         quizData.forEach(question => {
             if(question.selectedAnswer == question.correctAnswer) currentCorrectAnswers += 1;
         })
-        
         setNumberOfCorrectAnswers(currentCorrectAnswers)
+
     }, [quizData])
 
 
@@ -61,8 +70,9 @@ export default function Quiz() {
         event.preventDefault();
         if (checkAnswersClicked) {
             setCheckAnswersClicked(false)
-            setQuizData(setup);
+            // setQuizData([]);
             setNumberOfAnswers(0);
+            props.setGameStarted(false);
             return
         }
         setCheckAnswersClicked(true);
