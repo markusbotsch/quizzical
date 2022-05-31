@@ -107,6 +107,10 @@ button:disabled {
   height: 55px;
 }
 
+.difficulty-section {
+  margin-bottom: 20px;
+}
+
 .button-check {
   font-size: 12px;
   height: 35px;
@@ -139,6 +143,7 @@ input[type="radio"] {
   display: none;
 }
 
+.difficulty-section > input:checked + label,
 .question > input:checked + label {
   background-color: #D6DBF5;
   border: 1px solid #D6DBF5;

@@ -9,9 +9,14 @@ import Quiz from './components/Quiz';
 function App() {
 
   const [gameStarted, setGameStarted] = React.useState(false);
+  const [difficulty, setDifficulty]  = React.useState("medium")
 
   function startGame() {
     setGameStarted(true);
+  }
+
+  function changeDifficulty(newDifficulty) {
+    setDifficulty(newDifficulty);
   }
 
   return (
@@ -22,7 +27,9 @@ function App() {
       <div className="blueBlob">
         <img src={blueBlob} />
       </div>
-      {gameStarted ? <Quiz gameStarted={gameStarted} setGameStarted={setGameStarted} /> : <Start handleInput={startGame}/>}
+      {gameStarted ? 
+        <Quiz gameStarted={gameStarted} difficulty={difficulty} setGameStarted={setGameStarted} /> : 
+        <Start difficulty={difficulty} startGame={startGame} changeDifficulty={changeDifficulty}/>}
       <div className="yellowBlob">
         <img src={yellowBlob} />
       </div>
