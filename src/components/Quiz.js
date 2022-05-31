@@ -7,6 +7,7 @@ import Question from './Question';
 
 export default function Quiz(props) {
 
+    const [isLoaded, setIsLoaded] = React.useState(false);
     const [quizData, setQuizData] = React.useState([]);
     const [checkAnswersClicked, setCheckAnswersClicked] = React.useState(false);
     const [numberOfAnswers, setNumberOfAnswers] = React.useState(0);
@@ -31,8 +32,11 @@ export default function Quiz(props) {
                 })
             })
             .then(data => setQuizData(data))
+            .then(() => {
+                setTimeout(() => setIsLoaded(true), 500)
+            })
             .catch((e) => console.error(e))
-            
+
     },[props.gameStarted])
     
     const questionElements = quizData.map(item => 
@@ -78,6 +82,7 @@ export default function Quiz(props) {
         setCheckAnswersClicked(true);
     }
 
+    if (!isLoaded) return <p>Loading...</p>
 
     return(
         <div className="question-section">
