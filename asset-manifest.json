@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/quizzical/static/css/main.db85b695.css",
+    "main.js": "/quizzical/static/js/main.342669f8.js",
+    "static/media/inter-v11-latin-800.woff": "/quizzical/static/media/inter-v11-latin-800.af14b68e3ebadbf8a07f.woff",
+    "static/media/inter-v11-latin-regular.woff": "/quizzical/static/media/inter-v11-latin-regular.513f22e166bab984fa60.woff",
+    "static/media/inter-v11-latin-800.woff2": "/quizzical/static/media/inter-v11-latin-800.0a74b4142326f19f9ac3.woff2",
+    "static/media/inter-v11-latin-regular.woff2": "/quizzical/static/media/inter-v11-latin-regular.c96fe5ff771f9e7b53ab.woff2",
+    "static/media/karla-v22-latin-800.woff": "/quizzical/static/media/karla-v22-latin-800.843dcda8f57b7649b3f8.woff",
+    "static/media/karla-v22-latin-regular.woff": "/quizzical/static/media/karla-v22-latin-regular.d61d8ec4e596ce7e2fdf.woff",
+    "static/media/karla-v22-latin-800.woff2": "/quizzical/static/media/karla-v22-latin-800.2337a22b6542b63202cb.woff2",
+    "static/media/karla-v22-latin-regular.woff2": "/quizzical/static/media/karla-v22-latin-regular.3b748d472b2ea17ac01b.woff2",
+    "index.html": "/quizzical/index.html",
+    "static/media/blob-blue.svg": "/quizzical/static/media/blob-blue.5a0801127e1ec77c80b57fb7ab867cd6.svg",
+    "static/media/blob-yellow.svg": "/quizzical/static/media/blob-yellow.24e8bcad6e43342206d175e44da2f427.svg",
+    "main.db85b695.css.map": "/quizzical/static/css/main.db85b695.css.map",
+    "main.342669f8.js.map": "/quizzical/static/js/main.342669f8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db85b695.css",
+    "static/js/main.342669f8.js"
+  ]
+}
