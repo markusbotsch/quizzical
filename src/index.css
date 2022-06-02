@@ -45,9 +45,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+  display: -ms-grid;
   display: grid;
   place-content: center;
   padding: 20px;
+}
+
+.App {
+  background-color: #F5F7FB;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -123,9 +128,14 @@ button:disabled {
 
 .question-submit {
   margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 label {

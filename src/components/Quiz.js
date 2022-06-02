@@ -17,15 +17,13 @@ export default function Quiz(props) {
 
     // get questions and answers from Open Trivia Database
     React.useEffect(() => {
-        if(!props.gameStarted) return;
 
         axios.get(dataURL)
             .then(response => setupData(response.data.results))
             .then(data => setQuizData(data))
-            // .then(setTimeout(() => setIsLoaded(true), 500))
             .then(() => setIsLoaded(true))
             .catch((e) => console.error(e))
-    },[props.gameStarted])
+    },[])
     
     // keep track of number of given and correct answers
     React.useEffect(() => {
