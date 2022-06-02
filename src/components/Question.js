@@ -16,7 +16,7 @@ export default function Question(props) {
             />
             <label 
                 htmlFor={answer} 
-                style={props.checkAnswersClicked && answer == props.correctAnswer ? {backgroundColor: "#94D7A2", border: "1px solid #94D7A2"} : {}}
+                style={props.checkAnswersClicked && answer === props.correctAnswer ? {backgroundColor: "#94D7A2", border: "1px solid #94D7A2"} : {}}
             >
                 {he.decode(answer)}
             </label> 

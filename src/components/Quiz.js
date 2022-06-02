@@ -13,28 +13,30 @@ export default function Quiz(props) {
     const [numberOfAnswers, setNumberOfAnswers] = React.useState(0);
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = React.useState(0);
 
+    const dataURL = `https://opentdb.com/api.php?amount=5&difficulty=${props.difficulty}&type=multiple`;
 
     // get questions and answers from Open Trivia Database
     React.useEffect(() => {
         if(!props.gameStarted) return;
 
-        axios.get(`https://opentdb.com/api.php?amount=5&difficulty=${props.difficulty}&type=multiple`)
+        axios.get(dataURL)
             .then(response => setupData(response.data.results))
             .then(data => setQuizData(data))
-            .then(setTimeout(() => setIsLoaded(true), 500))
+            // .then(setTimeout(() => setIsLoaded(true), 500))
+            .then(() => setIsLoaded(true))
             .catch((e) => console.error(e))
     },[props.gameStarted])
     
     // keep track of number of given and correct answers
     React.useEffect(() => {
             // determine number of given answers to active "Check answers"-button
-            const currentAnswers = quizData.filter(question => question.selectedAnswer != "");
+            const currentAnswers = quizData.filter(question => question.selectedAnswer !== "");
             setNumberOfAnswers(currentAnswers.length);
 
             // determine number of correct answers 
             let currentCorrectAnswers = 0;
             quizData.forEach(question => {
-                if(question.selectedAnswer == question.correctAnswer) currentCorrectAnswers += 1;
+                if(question.selectedAnswer === question.correctAnswer) currentCorrectAnswers += 1;
             })
             setNumberOfCorrectAnswers(currentCorrectAnswers)
     }, [quizData])
@@ -60,7 +62,7 @@ export default function Quiz(props) {
     function answerSelected(event) {
         const { name, value } = event.target;
 
-        setQuizData(prevQuizData => prevQuizData.map(question => question.id == name ? {...question, selectedAnswer: value } : question))
+        setQuizData(prevQuizData => prevQuizData.map(question => question.id === name ? {...question, selectedAnswer: value } : question))
     }
 
     // Check answers rsp. start new game

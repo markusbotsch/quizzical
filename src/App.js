@@ -21,20 +21,14 @@ function App() {
 
   return (
     <div className="App">
-      <div className="yellowBlob">
-        <img src={yellowBlob} />
-      </div>
-      <div className="blueBlob">
-        <img src={blueBlob} />
-      </div>
       {gameStarted ? 
         <Quiz gameStarted={gameStarted} difficulty={difficulty} setGameStarted={setGameStarted} /> : 
         <Start difficulty={difficulty} startGame={startGame} changeDifficulty={changeDifficulty}/>}
       <div className="yellowBlob">
-        <img src={yellowBlob} />
+        <img src={yellowBlob} alt=""/>
       </div>
       <div className="blueBlob">
-        <img src={blueBlob} />
+        <img src={blueBlob} alt=""/>
       </div>
     </div>
   );
