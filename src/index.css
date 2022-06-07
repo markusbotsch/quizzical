@@ -44,11 +44,23 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px;
+  margin: 0 auto;
   height: 100vh;
   display: -ms-grid;
   display: grid;
   place-content: center;
-  padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.App {
+  max-width: 600px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -116,10 +128,6 @@ button:disabled {
   font-size: 12px;
   height: 35px;
   font-weight: bold;
-}
-
-.question-section {
-  max-width: 600px;
 }
 
 .question-submit {
